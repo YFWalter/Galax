@@ -26,7 +26,7 @@ public class Jugador implements Elemento {
 		//Si salud menor a 0 llamar a algun metodo que termine el juego.
 	}
 
-	public Point posicion()
+	public Point Posicion()
 	{
 		return _posicion;
 	}
