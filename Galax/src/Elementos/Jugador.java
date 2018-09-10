@@ -8,16 +8,21 @@ public class Jugador implements Elemento {
 
 	private int _salud;
 	private ArmaJugador _armaJ;
-	private JLabel imagen;
+	private JLabel _imagen;
 	private Point _posicion;
 
 	public Jugador()
 	{	
 		_salud=3;
 		_armaJ=new ArmaJugador();
-		imagen=new JLabel();
+		_imagen=new JLabel();
 		//Deberia aparecer en el medio del mapa en la ultima fila. Posicion exacta pendiente.
 		_posicion.setLocation(JFrame.HEIGHT/2,0);
+	}
+
+	public JLabel Imagen()
+	{
+		return _imagen;
 	}
 
 	public void ReducirSalud(int cantidad)
