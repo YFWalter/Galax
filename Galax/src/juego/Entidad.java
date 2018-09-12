@@ -31,6 +31,12 @@ public abstract class Entidad {
 		return pos;
 	}
 	
+	public void setPos(int x,int y)
+	{
+		pos.x=x;
+		pos.y=y;
+	}
+	
 	protected void cambiarGrafico(int dir){
 		if(this.grafico != null){
 			//this.grafico.setIcon(this.image[dir]);
