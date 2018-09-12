@@ -14,16 +14,16 @@ public class Juego {
 
 		malos = new Malo[4];
 
-		jugador = new Jugador(20,200,500 );
+		jugador = new Jugador(20,350,500 );
 		gui.add(jugador.getGrafico(0));
 
-		int x_temp = 200;
-		int y_temp = 30;
+		int x_temp = 350;
+		int y_temp = 50;
 
 		for(int i = 0; i < malos.length; i++){			
 			malos[i] = new Malo(10, x_temp,y_temp);			 
 			gui.add(malos[i].getGrafico(i));
-			y_temp +=30;
+			y_temp +=50;
 
 		}
 	}
