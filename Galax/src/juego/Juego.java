@@ -14,7 +14,7 @@ public class Juego {
 
 		malos = new Malo[4];
 
-		jugador = new Jugador(20,200,230 );
+		jugador = new Jugador(20,200,500 );
 		gui.add(jugador.getGrafico(0));
 
 		int x_temp = 200;
@@ -59,13 +59,13 @@ public class Juego {
 
 		if(direccion==2 )
 		{	if	(jugador.getPos().getX()==0)				
-			jugador.setPos(400,(int)jugador.getPos().getY());
+			jugador.setPos(800,(int)jugador.getPos().getY());
 		else
 			jugador.mover(direccion);
 		}
 
 		if(direccion==3)
-		{	if(jugador.getPos().getX()==400)	
+		{	if(jugador.getPos().getX()==800)	
 			jugador.setPos(0, (int) jugador.getPos().getY());
 		else
 			jugador.mover(direccion);
