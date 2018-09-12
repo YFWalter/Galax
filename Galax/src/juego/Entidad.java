@@ -9,8 +9,8 @@ public abstract class Entidad {
 
 	protected JLabel grafico;
 	protected Icon image[];
-	protected final int width = 50;
-	protected final int height = 50;
+	protected final int width = 75;
+	protected final int height = 75;
 
 	protected int velocidad;
 

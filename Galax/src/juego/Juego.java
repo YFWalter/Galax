@@ -18,7 +18,7 @@ public class Juego {
 		gui.add(jugador.getGrafico(0));
 
 		int x_temp = 370;
-		int y_temp = 30;
+		int y_temp = 50;
 
 
 		for(int i = 0; i < malos.length; i++){			
