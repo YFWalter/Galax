@@ -14,14 +14,22 @@ public class Juego {
 
 		malos = new Malo[4];
 
+<<<<<<< HEAD
 		jugador = new Jugador(20,350,500 );
 		gui.add(jugador.getGrafico(0));
 
 		int x_temp = 350;
 		int y_temp = 50;
+=======
+		jugador = new Jugador(20,370,500 );
+		gui.add(jugador.getGrafico(0));
+
+		int x_temp = 370;
+		int y_temp = 30;
+>>>>>>> pruebaMover
 
 		for(int i = 0; i < malos.length; i++){			
-			malos[i] = new Malo(10, x_temp,y_temp);			 
+			malos[i] = new Malo(50, x_temp,y_temp);			 
 			gui.add(malos[i].getGrafico(i));
 			y_temp +=50;
 
@@ -49,15 +57,6 @@ public class Juego {
 			direccion = 3;
 			break;
 		}
-
-
-
-		if((direccion==2 )&&(jugador.getPos().x<=-50))				
-			jugador.setPos(800,jugador.getPos().y);
-
-
-		if((direccion==3) &&(jugador.getPos().x>=800))	
-			jugador.setPos(-50,jugador.getPos().y);
 
 		jugador.mover(direccion);
 
