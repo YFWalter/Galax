@@ -10,5 +10,8 @@ public class Jugador extends Entidad{
 		super(velocidad, x, y);
 		
 		this.image[0] = new ImageIcon(this.getClass().getResource("/Galaxia/Nave.png"));
+		this.image[1] = new ImageIcon(this.getClass().getResource("/Galaxia/Nave.png"));
+		this.image[2] = new ImageIcon(this.getClass().getResource("/Galaxia/Nave.png"));
+		this.image[3] = new ImageIcon(this.getClass().getResource("/Galaxia/Nave.png"));
 	}
 }

@@ -9,8 +9,8 @@ public abstract class Entidad {
 	
 	protected JLabel grafico;
 	protected Icon image[];
-	protected final int width = 400;
-	protected final int height = 500;
+	protected final int width = 50;
+	protected final int height = 50;
 	
 	protected int velocidad;
 	
@@ -33,7 +33,7 @@ public abstract class Entidad {
 	
 	protected void cambiarGrafico(int dir){
 		if(this.grafico != null){
-			this.grafico.setIcon(this.image[dir]);
+			//this.grafico.setIcon(this.image[dir]);
 			this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
 		}
 	}
@@ -56,12 +56,12 @@ public abstract class Entidad {
 				pos.setLocation(pos.x + velocidad, pos.y);
 				break;
 		}
-		cambiarGrafico(0);
+		cambiarGrafico(dir);
 	}
 	
-	public JLabel getGrafico(){
+	public JLabel getGrafico(int i){
 		if(this.grafico == null){
-			this.grafico = new JLabel(image[0]);
+			this.grafico = new JLabel(image[i]);
 			this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
 		}
 		

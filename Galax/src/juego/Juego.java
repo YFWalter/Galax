@@ -11,28 +11,30 @@ public class Juego {
 	private Jugador jugador;
 	
 	public Juego(GUI gui){
+		
 		malos = new Malo[4];
 		
-		jugador = new Jugador(15, 10, 10);
-		gui.add(jugador.getGrafico());
+		jugador = new Jugador(20,200,230 );
+		gui.add(jugador.getGrafico(0));
 		
-		for(int i = 0; i < malos.length; i++){
-			Random r = new Random();
-			malos[i] = new Malo(10, r.nextInt(gui.getWidth() - 100), r.nextInt(gui.getHeight() - 100));
-			gui.add(malos[i].getGrafico());
+		int x_temp = 200;
+		int y_temp = 30;
+		
+		for(int i = 0; i < malos.length; i++){			
+				malos[i] = new Malo(10, x_temp,y_temp);			 
+				gui.add(malos[i].getGrafico(i));
+				y_temp +=30;
+			
 		}
 	}
 	
 	public void mover(){
-		for(int i = 0; i < malos.length; i++){
-			
-			// Inteligencia de los malos
-			Random r = new Random();
-			
-			int dir = r.nextInt(4);
-			
-			malos[i].mover(dir);
-		}
+			for(int i = 0 ; i < malos.length ; i++) {
+				if( i % 2 == 0 )				
+					malos[i].mover(3);
+				else
+					malos[i].mover(2);
+			}
 	}
 	
 	public void mover(int dir){		
