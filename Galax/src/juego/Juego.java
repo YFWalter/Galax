@@ -21,7 +21,7 @@ public class Juego {
 		int y_temp = 30;
 
 		for(int i = 0; i < malos.length; i++){			
-			malos[i] = new Malo(10, x_temp,y_temp);			 
+			malos[i] = new Malo(50, x_temp,y_temp);			 
 			gui.add(malos[i].getGrafico(i));
 			y_temp +=30;
 
@@ -56,14 +56,7 @@ public class Juego {
 			direccion = 3;
 			break;
 		}
-
-		if((direccion==2 )&&(jugador.getPos().x<=0))				
-			jugador.setPos(420,jugador.getPos().y);
-
-
-		if((direccion==3) &&(jugador.getPos().x>=400))	
-			jugador.setPos(-20,jugador.getPos().y);
-
+		
 		jugador.mover(direccion);
 
 	}
