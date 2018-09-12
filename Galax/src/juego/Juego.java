@@ -22,7 +22,7 @@ public class Juego {
 
 
 		for(int i = 0; i < malos.length; i++){			
-			malos[i] = new Malo(50, x_temp,y_temp);			 
+			malos[i] = new Malo(100, x_temp,y_temp);			 
 			gui.add(malos[i].getGrafico(i));
 			y_temp +=50;
 
