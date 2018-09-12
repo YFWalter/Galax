@@ -57,12 +57,12 @@ public abstract class Entidad {
 		 */
 		case 2 : //Izquierda
 			if (pos.x<=0)				
-				pos.setLocation(400,pos.y);
+				pos.setLocation(750,pos.y);
 			else
 				pos.setLocation(pos.x - velocidad, pos.y);
 			break;
 		case 3 : //Derecha
-			if (pos.x>=400)
+			if (pos.x>=750)
 				pos.setLocation(0,pos.y);
 			else		
 				pos.setLocation(pos.x + velocidad, pos.y);
