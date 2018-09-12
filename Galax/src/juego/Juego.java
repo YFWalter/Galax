@@ -57,6 +57,7 @@ public class Juego {
 			break;
 		}
 
+<<<<<<< HEAD
 		if(direccion==2 )
 		{	if	(jugador.getPos().getX()==0)				
 			jugador.setPos(800,(int)jugador.getPos().getY());
@@ -70,6 +71,16 @@ public class Juego {
 		else
 			jugador.mover(direccion);
 		}
+=======
+		if((direccion==2 )&&(jugador.getPos().x<=0))				
+			jugador.setPos(420,jugador.getPos().y);
+
+
+		if((direccion==3) &&(jugador.getPos().x>=400))	
+			jugador.setPos(-20,jugador.getPos().y);
+
+		jugador.mover(direccion);
+>>>>>>> pruebaMover
 
 	}
 
