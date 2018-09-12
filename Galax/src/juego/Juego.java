@@ -41,14 +41,7 @@ public class Juego {
 		int direccion = 0;
 
 		switch (dir){
-		/*
-			case KeyEvent.VK_UP : //Arriba
-				direccion = 0;
-				break;
-			case KeyEvent.VK_DOWN : //Abajo
-				direccion = 1;
-				break;
-		 */		
+			
 		case KeyEvent.VK_LEFT : //Izquierda
 			direccion = 2;
 			break;
@@ -57,30 +50,17 @@ public class Juego {
 			break;
 		}
 
-<<<<<<< HEAD
-		if(direccion==2 )
-		{	if	(jugador.getPos().getX()==0)				
-			jugador.setPos(800,(int)jugador.getPos().getY());
-		else
-			jugador.mover(direccion);
-		}
-
-		if(direccion==3)
-		{	if(jugador.getPos().getX()==800)	
-			jugador.setPos(0, (int) jugador.getPos().getY());
-		else
-			jugador.mover(direccion);
-		}
-=======
-		if((direccion==2 )&&(jugador.getPos().x<=0))				
-			jugador.setPos(420,jugador.getPos().y);
 
 
-		if((direccion==3) &&(jugador.getPos().x>=400))	
-			jugador.setPos(-20,jugador.getPos().y);
+		if((direccion==2 )&&(jugador.getPos().x<=-50))				
+			jugador.setPos(800,jugador.getPos().y);
+
+
+		if((direccion==3) &&(jugador.getPos().x>=800))	
+			jugador.setPos(-50,jugador.getPos().y);
 
 		jugador.mover(direccion);
->>>>>>> pruebaMover
+
 
 	}
 
