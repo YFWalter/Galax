@@ -14,7 +14,6 @@ public class Juego {
 
 		malos = new Malo[4];
 
-		jugador = new Jugador(20,200,230 );
 		gui.add(jugador.getGrafico(0));
 
 		int x_temp = 200;
@@ -41,14 +40,7 @@ public class Juego {
 		int direccion = 0;
 
 		switch (dir){
-		/*
-			case KeyEvent.VK_UP : //Arriba
-				direccion = 0;
-				break;
-			case KeyEvent.VK_DOWN : //Abajo
-				direccion = 1;
-				break;
-		 */		
+			
 		case KeyEvent.VK_LEFT : //Izquierda
 			direccion = 2;
 			break;
@@ -56,8 +48,22 @@ public class Juego {
 			direccion = 3;
 			break;
 		}
+<<<<<<< HEAD
 		
+=======
+
+
+
+		if((direccion==2 )&&(jugador.getPos().x<=-50))				
+			jugador.setPos(800,jugador.getPos().y);
+
+
+		if((direccion==3) &&(jugador.getPos().x>=800))	
+			jugador.setPos(-50,jugador.getPos().y);
+
+>>>>>>> 36d8c287b59ac2a82b70459d71dd31eba704ca1d
 		jugador.mover(direccion);
+
 
 	}
 
