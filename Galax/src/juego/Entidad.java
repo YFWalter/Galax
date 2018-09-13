@@ -39,22 +39,13 @@ public abstract class Entidad {
 
 	protected void cambiarGrafico(int dir){
 		if(this.grafico != null){
-			//this.grafico.setIcon(this.image[dir]);
 			this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
 		}
 	}
 
 	public void mover(int dir){	
 		switch (dir) {
-		/*
-
-			case 0 : //Arriba
-				pos.setLocation(pos.x, pos.y - velocidad);
-				break;
-			case 1 : //Abajo
-				pos.setLocation(pos.x, pos.y + velocidad);
-				break;
-		 */
+		
 		case 2 : //Izquierda
 			if (pos.x<=-50)				
 				pos.setLocation(800,pos.y);
