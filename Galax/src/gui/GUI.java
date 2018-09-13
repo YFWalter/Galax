@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 import juego.Juego;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import Entrada.KeyBoard;
 
 public class GUI extends JFrame {
 	
@@ -22,7 +21,7 @@ public class GUI extends JFrame {
 	private Juego j;
 	private ContadorTiempo tiempo;
 	
-	private KeyBoard keyBoard;
+	
 
 	/**
 	 * Launch the application.
@@ -45,7 +44,6 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 		
-		keyBoard = new KeyBoard();
 		
 		addKeyListener(new KeyAdapter() {
 			@Override

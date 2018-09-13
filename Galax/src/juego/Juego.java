@@ -3,7 +3,6 @@ package juego;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-import Entrada.KeyBoard;
 import gui.GUI;
 
 public class Juego {
@@ -15,7 +14,7 @@ public class Juego {
 		malos = new Malo[4];
 
 		jugador = new Jugador(20,370,500 );
-		gui.add(jugador.getGrafico(0));
+		gui.add(jugador.getGrafico(0));  
 
 		int x_temp = 370;
 		int y_temp = 50;
