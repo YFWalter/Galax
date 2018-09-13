@@ -12,18 +12,18 @@ public abstract class Entidad {
 	protected final int width = 75;
 	protected final int height = 75;
 
-	protected int velocidad;
+	protected double velocidad;
 
 	protected Point pos;
 
-	protected Entidad(int velocidad, int x, int y) {
+	protected Entidad(double velocidad, int x, int y) {
 		this.pos = new Point(x, y);
 		this.velocidad = velocidad;
 
 		this.image = new Icon[4];
 	}
 
-	public int getVelocidad() {
+	public double getVelocidad() {
 		return velocidad;
 	}
 
