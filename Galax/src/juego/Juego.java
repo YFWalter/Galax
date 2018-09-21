@@ -1,44 +1,49 @@
 package juego;
 
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Random;
-
+import java.util.Vector;
 
 import gui.GUI;
 
 public class Juego {
-	private Malo malos[];
 	private Jugador jugador;
 	private GUI gui;
-	private int EnemigosRestantes=4;
+	private Vector<Malo> malo;
 
 	public Juego(GUI gui){
 		this.gui=gui;
-		malos = new Malo[4];
+		
+		malo = new Vector<Malo>();
 
 		jugador = new Jugador(20,370,500 );
-		gui.add(jugador.getGrafico(0));
+		gui.add(jugador.getGrafico());
 
 		int x_temp = 370;
 		int y_temp = 50;
 
 
-		for(int i = 0; i < malos.length; i++){			
-			malos[i] = new Malo(50, x_temp,y_temp);			 
-			gui.add(malos[i].getGrafico(i));
-			y_temp +=50;
+		for(int i = 0; i < 30; i++){
+			
+			Random rnd = new Random();
+			int r = rnd.nextInt(4);
+			
+			malo.add(tipoDeMalo(x_temp,y_temp, r));
+			
+			x_temp +=50;
+			if(i > 10)
+				y_temp +=30;
+			gui.add(malo.get(i).getGrafico());
 
 		}
 	}
 
 	public void mover(){
-		for(int i = 0 ; i < malos.length ; i++) {
-			if(malos[i]!=null)
+		for(int i = 0 ; i < malo.size()  ; i++) {
 				if( i % 2 == 0 )				
-					malos[i].mover(3);
+					malo.get(i).mover(3);
 				else
-					malos[i].mover(2);
+					malo.get(i).mover(2);
 		}
 	}
 
@@ -47,7 +52,7 @@ public class Juego {
 
 		switch (dir){
 
-		case KeyEvent.VK_SPACE:
+		case KeyEvent.VK_SPACE: //Disparar
 			MatarEnemigo(gui);
 			break;
 		case KeyEvent.VK_LEFT : //Izquierda
@@ -64,27 +69,36 @@ public class Juego {
 	}
 
 
-	private void MatarEnemigo(GUI gui)
-	{
-
-		for(int i=malos.length-1; i>=0; i--)	
-			if(malos[i]!=null)
-				if(EnemigoAlAlcance(malos[i]))
+	private void MatarEnemigo(GUI gui){
+		for(int i=malo.size()-1; i>=0; i--)	
+				if(EnemigoAlAlcance(malo.get(i)))
 				{		
-					gui.remove(malos[i].getGrafico(i));
-					malos[i]=null;
-					EnemigosRestantes--;
+					gui.remove(malo.get(i).getGrafico());
+					malo.remove(i);
 					break;
 				}
-
 	}
 
-
-
-	private boolean EnemigoAlAlcance(Entidad e)
-	{
+	private boolean EnemigoAlAlcance(Entidad e){
 		return (e.getPos().x>=(jugador.getPos().x)-60) && (e.getPos().x<=(jugador.getPos().x)+60);
-
 	}
 
+	private Malo tipoDeMalo(int x,int y,int r){
+		Malo m = null;
+		switch(r) {
+			case 0 : 
+				m = new Malo_Uno(30,x,y);
+				break;
+			case 1 :
+				m = new Malo_Dos(20,x,y);
+				break;
+			case 2 :
+				m = new Malo_Tres(15,x,y);
+				break;
+			case 3 : 
+				m = new Malo_Cuatro(10,x,y);
+				break;
+		}
+		return m;
+	}
 }

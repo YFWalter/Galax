@@ -58,6 +58,7 @@ public class GUI extends JFrame {
 		getContentPane().setLayout(null);		
 		setTitle("Galax");
 		setSize(WIDTH, HEIGHT);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
