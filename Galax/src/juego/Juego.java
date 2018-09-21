@@ -3,10 +3,13 @@ package juego;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.util.Vector;
+import javax.swing.JLabel;
+import gui.*;
 
 public class Juego {
 	private Jugador jugador;
 	private Vector<Malo> malo;
+	private int PuntajeJuego=0;
 
 	public Juego(GUI gui){
 
@@ -15,15 +18,36 @@ public class Juego {
 		jugador = new Jugador(20,370,500 );
 		gui.add(jugador.getGrafico());
 
+		int x_temp = 25;
 		int y_temp = 50;
 
 
+		for(int j=0;j<3;j++)//filas
+			for(int i = 0; i < 10; i++)//columnas
+			{
 
-		}
+				Random rnd = new Random();
+				int r = rnd.nextInt(4);
+
+				malo.add(tipoDeMalo(x_temp,y_temp, r));
+
+				x_temp +=75;
+				if(i==9)//Al cambiar de fila reseteo el X y aumento el Y para insertar en nueva fila
+				{
+					y_temp +=75;
+					x_temp=25;	
+				}
+				gui.add(malo.get(j*10+i).getGrafico());
+
+			}
 	}
 
 	public void mover(){
 		for(int i = 0 ; i < malo.size()  ; i++) {
+			if( Math.floorDiv(i, 10)== 1 )		//division entera igual a 1		
+				malo.get(i).mover(3);
+			else
+				malo.get(i).mover(2);
 		}
 	}
 
@@ -46,7 +70,24 @@ public class Juego {
 	}
 
 
+	public Entrada<JLabel,Integer>  MatarEnemigo()
+	{
+		Entrada <JLabel,Integer> aRetornar=new Entrada<JLabel,Integer>(null,null);
+
 		for(int i=malo.size()-1; i>=0; i--)	
+			if(EnemigoAlAlcance(malo.get(i)))
+			{		
+				aRetornar.setClave(malo.get(i).getGrafico());
+				aRetornar.setValor(i);
+				return aRetornar;
+			}
+		return null; //no encontre enemigo
+	}
+
+	public Malo RemoverEnemigo(int i)
+	{
+		PuntajeJuego+=malo.get(i).getPuntajeEnemigo();
+		return malo.remove(i);
 	}
 
 	private boolean EnemigoAlAlcance(Entidad e){
@@ -55,8 +96,27 @@ public class Juego {
 
 	private Malo tipoDeMalo(int x,int y,int r){
 		Malo m = null;
+		int velocidadEnemigo=40;
 		switch(r) {
+		case 0 : 
+			m = new Malo_Uno(velocidadEnemigo,x,y,100);
+			break;
+		case 1 :
+			m = new Malo_Dos(velocidadEnemigo,x,y,200);
+			break;
+		case 2 :
+			m = new Malo_Tres(velocidadEnemigo,x,y,300);
+			break;
+		case 3 : 
+			m = new Malo_Cuatro(velocidadEnemigo,x,y,400);
+			break;
 		}
 		return m;
 	}
+
+	public int getPuntajeJuego()
+	{
+		return PuntajeJuego;
+	}
+
 }

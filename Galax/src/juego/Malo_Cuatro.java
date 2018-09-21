@@ -2,6 +2,8 @@ package juego;
 
 public class Malo_Cuatro extends Malo {
 
+	public Malo_Cuatro(int velocidad, int x, int y,int puntaje) {
+		super(velocidad, x, y,puntaje);
 	}
 
 	public String getImage() {
