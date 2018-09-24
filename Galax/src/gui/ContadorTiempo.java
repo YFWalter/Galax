@@ -15,7 +15,6 @@ public class ContadorTiempo extends Thread {
 
 		while(corriendo){
 			try {
-				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

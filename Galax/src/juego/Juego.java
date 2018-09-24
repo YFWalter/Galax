@@ -28,23 +28,14 @@ public class Juego {
 
 				Random rnd = new Random();
 				int r = rnd.nextInt(4);
-
 				malo.add(tipoDeMalo(x_temp,y_temp, r));
-
 				x_temp +=75;
-				if(i==9)//Al cambiar de fila reseteo el X y aumento el Y para insertar en nueva fila
-				{
-					y_temp +=75;
-					x_temp=25;	
-				}
 				gui.add(malo.get(j*10+i).getGrafico());
-
 			}
 	}
 
 	public void mover(){
 		for(int i = 0 ; i < malo.size()  ; i++) {
-			if( Math.floorDiv(i, 10)== 1 )		//division entera igual a 1		
 				malo.get(i).mover(3);
 			else
 				malo.get(i).mover(2);
@@ -84,19 +75,15 @@ public class Juego {
 		return null; //no encontre enemigo
 	}
 
-	public Malo RemoverEnemigo(int i)
 	{
 		PuntajeJuego+=malo.get(i).getPuntajeEnemigo();
-		return malo.remove(i);
 	}
 
 	private boolean EnemigoAlAlcance(Entidad e){
-		return (e.getPos().x>=(jugador.getPos().x)-30) && (e.getPos().x<=(jugador.getPos().x)+30);
 	}
 
 	private Malo tipoDeMalo(int x,int y,int r){
 		Malo m = null;
-		int velocidadEnemigo=40;
 		switch(r) {
 		case 0 : 
 			m = new Malo_Uno(velocidadEnemigo,x,y,100);

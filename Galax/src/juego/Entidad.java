@@ -35,15 +35,8 @@ public abstract class Entidad {
 		pos.y=y;
 	}
 
-	protected void cambiarGrafico(int dir){
-		if(this.grafico != null){
-			this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
-		}
-	}
 
-	public void mover(int dir){	
 		switch (dir) {
-		
 		case 2 : //Izquierda
 			if (pos.x<=-50)				
 				pos.setLocation(800,pos.y);
@@ -57,7 +50,6 @@ public abstract class Entidad {
 				pos.setLocation(pos.x + velocidad, pos.y);
 			break;
 		}
-		cambiarGrafico(dir);
 	}
 
 	public JLabel getGrafico(){

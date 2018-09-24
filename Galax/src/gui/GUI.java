@@ -56,7 +56,6 @@ public class GUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		//setBounds(100, 100, 450, 300);
 
 
 		contentPane = new JPanel();
