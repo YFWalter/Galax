@@ -1,4 +1,5 @@
 package juego;
+import javax.swing.JLabel;
 
 public  class Malo_Uno extends Malo {
 
@@ -6,6 +7,7 @@ public  class Malo_Uno extends Malo {
 		super(velocidad, x, y,puntaje);
 	}
 
+	
 	public String getImage() {
 		
 		return "/graficos/Malo_1.gif";

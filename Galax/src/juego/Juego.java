@@ -1,6 +1,9 @@
 package juego;
 
 import java.awt.event.KeyEvent;
+import juego.*;
+import Colisionadores.*;
+import Movimientos.*;
 import java.util.Random;
 import java.util.Vector;
 import javax.swing.JLabel;
@@ -9,20 +12,29 @@ import gui.*;
 public class Juego {
 	private Jugador jugador;
 	private Vector<Malo> malo;
+	private Vector<Pared> paredes;
+	private Vector<DisparoAliado> disparosJugador;
 	private int PuntajeJuego=0;
+	private GUI interfaz;
 
 	public Juego(GUI gui){
-
+		interfaz=gui;
 		malo = new Vector<Malo>();
+		paredes=new Vector<Pared>();
 
 		jugador = new Jugador(20,370,500 );
 		gui.add(jugador.getGrafico());
 
+		disparosJugador=new Vector<DisparoAliado>();
+		MovimientoDisparosAliados moverDisparosAliados=new MovimientoDisparosAliados(disparosJugador);
+		moverDisparosAliados.start();
+
 		int x_temp = 25;
 		int y_temp = 50;
 
-
+		//Añadir enemigos 1 por 1
 		for(int j=0;j<3;j++)//filas
+		{
 			for(int i = 0; i < 10; i++)//columnas
 			{
 
@@ -32,31 +44,45 @@ public class Juego {
 				x_temp +=75;
 				gui.add(malo.get(j*10+i).getGrafico());
 			}
+			//Al cambiar de fila reseteo el X y aumento el Y para insertar en nueva fila
+			y_temp +=75;
+			x_temp=25;	
+		}
+
+		//Añadir obstaculos 1 por 1
+		int XPared=-20;
+		int YPared=300;
+		for(int j=0;j<4;j++)//Grupos
+		{
+			for(int i = 0; i < 4; i++)
+			{
+				paredes.add(new Pared(0,XPared,YPared));
+				gui.add(paredes.get(j*4+i).getGrafico());
+				XPared+=35;
+			}
+			//Al cambiar de fila reseteo el X y aumento el Y para insertar en nueva fila
+			XPared +=75;	
+		}
+
 	}
 
-	public void mover(){
-		for(int i = 0 ; i < malo.size()  ; i++) {
-				malo.get(i).mover(3);
-			else
-				malo.get(i).mover(2);
-		}
+	public void moverEnemigos()
+	{
+		MovimientoEnemigos moverEnemigos=new MovimientoEnemigos(malo);
+		moverEnemigos.start();
 	}
 
 	public void mover(int dir){		
-		int direccion = 0;
 
 		switch (dir){
 
 		case KeyEvent.VK_LEFT : //Izquierda
-			direccion = 2;
+			jugador.mover(jugador.MoverIzquierda);
 			break;
 		case KeyEvent.VK_RIGHT : //Derecha
-			direccion = 3;
+			jugador.mover(jugador.MoverDerecha);
 			break;
 		}
-
-		jugador.mover(direccion);
-
 
 	}
 
@@ -75,15 +101,19 @@ public class Juego {
 		return null; //no encontre enemigo
 	}
 
+	public void RemoverEnemigo(int i)
 	{
 		PuntajeJuego+=malo.get(i).getPuntajeEnemigo();
+		malo.remove(i);
 	}
 
 	private boolean EnemigoAlAlcance(Entidad e){
+		return(jugador.getPos().x+37.5>=e.getPos().x)&&(jugador.getPos().x+37.5<=e.getPos().x+75);
 	}
 
 	private Malo tipoDeMalo(int x,int y,int r){
 		Malo m = null;
+		int velocidadEnemigo=20;
 		switch(r) {
 		case 0 : 
 			m = new Malo_Uno(velocidadEnemigo,x,y,100);
@@ -99,6 +129,13 @@ public class Juego {
 			break;
 		}
 		return m;
+	}
+
+	public DisparoAliado GenerarDisparo()
+	{
+		DisparoAliado disparo=jugador.Disparar(malo,disparosJugador,paredes,interfaz);
+		disparosJugador.add(disparo);
+		return disparo;
 	}
 
 	public int getPuntajeJuego()

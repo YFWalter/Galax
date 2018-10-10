@@ -18,8 +18,7 @@ public class GUI extends JFrame {
 
 	private JPanel contentPane;
 
-	private Juego j;
-	private ContadorTiempo tiempo;
+	private Juego MiJuego;
 	final GUI gui=this; 
 	private JLabel Puntaje;
 
@@ -64,22 +63,16 @@ public class GUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		j = new Juego(this);
-		tiempo = new ContadorTiempo(j);
-		tiempo.start();
+		MiJuego = new Juego(this);
+		MiJuego.moverEnemigos();
 		
 		Puntaje=new JLabel("Puntaje:");
 		Puntaje.setBounds(0,-40,500,100);
 		Puntaje.setForeground(Color.white);
 		add(Puntaje);
-		//this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
 	}
 
-	protected void mover(KeyEvent key){
-		j.mover(key.getKeyCode());
-
-		this.repaint();
-	}
+	
 
 	private class Oyente extends java.awt.event.KeyAdapter{
 		Entrada<JLabel,Integer> numero=null;
@@ -88,15 +81,20 @@ public class GUI extends JFrame {
 
 			if(arg0.getKeyCode()==KeyEvent.VK_SPACE)
 			{
-				numero=j.MatarEnemigo();
+				gui.add(MiJuego.GenerarDisparo().getGrafico());
+				numero=MiJuego.MatarEnemigo();
 				if(numero!=null)
 				{
 					gui.remove(numero.getClave());
-					j.RemoverEnemigo(numero.getValor());
-					Puntaje.setText("Puntaje: "+j.getPuntajeJuego());
+					MiJuego.RemoverEnemigo(numero.getValor());
+					Puntaje.setText("Puntaje: "+MiJuego.getPuntajeJuego());
 				}
 			}
-			else mover(arg0);
+			else 
+			{
+				MiJuego.mover(arg0.getKeyCode());
+				//gui.repaint();
+			}
 		}
 	}
 }

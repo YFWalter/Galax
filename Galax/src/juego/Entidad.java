@@ -2,25 +2,33 @@ package juego;
 
 import java.awt.Point;
 
+import Colisionadores.Colisionador;
+import Colisionadores.Disparo;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
 
 public abstract class Entidad {
 
 	protected JLabel grafico;
 	protected final int width = 75;
 	protected final int height = 75;
-
+	protected final int MoverIzquierda=2;
+	protected final int MoverDerecha=3;
 	protected int velocidad;
+	protected Colisionador colisionador;
 
 	protected Point pos;
 
 	protected Entidad(int velocidad, int x, int y) {
 		this.pos = new Point(x, y);
 		this.velocidad = velocidad;
+		colisionador=null;
 	}
 
+	
 	public int getVelocidad() {
 		return velocidad;
 	}
@@ -36,20 +44,28 @@ public abstract class Entidad {
 	}
 
 
+
+	public void mover(int dir)
+	{	
+		int LimiteIzquierdo=-50;
+		int LimiteDerecho=800;
 		switch (dir) {
+
 		case 2 : //Izquierda
-			if (pos.x<=-50)				
-				pos.setLocation(800,pos.y);
+			if (pos.x<=LimiteIzquierdo)				
+				pos.setLocation(LimiteDerecho,pos.y);
 			else
 				pos.setLocation(pos.x - velocidad, pos.y);
 			break;
 		case 3 : //Derecha
-			if (pos.x>=800)
-				pos.setLocation(-50,pos.y);
+			if (pos.x>=LimiteDerecho)
+				pos.setLocation(LimiteIzquierdo,pos.y);
 			else		
 				pos.setLocation(pos.x + velocidad, pos.y);
 			break;
 		}
+		if(this.grafico!=null)
+			this.grafico.setBounds(this.getPos().x, this.getPos().y, width, height);
 	}
 
 	public JLabel getGrafico(){
@@ -60,6 +76,13 @@ public abstract class Entidad {
 		}
 		return this.grafico;
 	}
+	
+	public Colisionador getColisionador()
+	{
+		return this.colisionador;
+	}
+	
 
+	//public abstract void SerChocado(Colisionador colisionador);
 	public abstract String getImage();
 }
