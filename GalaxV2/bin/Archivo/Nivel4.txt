@@ -1,0 +1,15 @@
+13
+17
+N P A N N N N N N N N N N N N A P
+N P A N N N N N N N N N N N N A P
+N P A N N N N N N N N N N N N A P
+N P A N N N N N N N N N N N N A P
+N P A P N S P P P P P N S P P A P
+N P A N O N N N N N N N N N N A P
+N P A N N N N N N N N N N N N A P
+N P A N N N N N N N N N O N N A P
+N P A N N N N N N N N N N N N A P
+N P A N N N N N O N N N N N N A P
+N P A N N N N N N N N N N N N A P
+N P A N N N N N N N N N N N N A P
+N P A N N N N N N N N N N N N A P

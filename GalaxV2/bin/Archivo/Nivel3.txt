@@ -1,0 +1,15 @@
+13
+17
+N N N N N N N N N N N N N N N N N
+N N N N N N N N N N N N N N N N N
+N N N N N N N N N N N N N N N N N
+P P P P P P P P P P P P P P P P P
+P P P P P P P P P P P P P P P P P
+N N N N N N N N O N N N N N N N N
+N A A A N N N N N N N N N N A A A
+N N N N N N N N N N N N N N N N N
+N N N N N N N N N N N N N N N N N
+N N N N N N N N N N N N N N N N N
+N N N N N N N N N N N N N N N N N
+N N N N N N N N N N N N N N N N N
+N N N N N N N N N N N N N N N N N
