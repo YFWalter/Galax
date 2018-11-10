@@ -10,3 +10,5 @@ Version modificada del juego " Galaxia "
    Disparo: Barra Espaciadora.
 
    Cambiar Arma: B.
+
+
