@@ -5,7 +5,7 @@ Version modificada del juego " Galaxia "
 
 # Controles
 
-   Desplazamiento: ⬅,⬆,➡.
+   Desplazamiento: ⬅,➡.
 
    Disparo: Barra Espaciadora.
 
