@@ -1,0 +1,7 @@
+No descubri como agregar + o ++ al final de los metodo en StarUML para los metodos redefinidos o implementados
+Por eso sigo esta politica (espero cumplirlo en todos los casos):
+1) Si el metodo reaparece en un hijo es muy probable que sea implementado ya que el 90% o mas de las clases padre son abstractas
+2) Si reaparece en un nieto esta redefinido
+3) Si tiene un # es que es abstracto (se usa el mismo simbolo para atributo y metodos protected)
+4) No pude reorganizar la parte de enemigos por falta de espacio/tiempo y ahora son muchos mas asi que pondre los basicos (Pikachu y Raichu)
+ pero el resto sigo la misma formula donde la primera forma es hijo de Enemigo ,la segunda es hija de la primera etc y heredan los mismos metodos
